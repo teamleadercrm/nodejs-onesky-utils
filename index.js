@@ -19,7 +19,7 @@ var request = require('request-promise'),
  */
 function getFile(options) {
   options.hash = _getDevHash(options.secret);
-  return _getTranslation(_getLink(options), options.language);
+  return _getTranslation(_getLink(options));
 }
 
 /**
@@ -27,7 +27,7 @@ function getFile(options) {
  * @param  {String}   language
  * @private
  */
-function _getTranslation(url, language) {
+function _getTranslation(url) {
   return request(url).catch(_handleError);
 }
 
@@ -64,7 +64,7 @@ function _getLink(options) {
  * @private
  */
 function _handleError(data) {
-  var error = {}
+  var error = {};
   return new Promise(function(resolve, reject) {
     try {
       var content = JSON.parse(data.response.body);
@@ -80,6 +80,6 @@ function _handleError(data) {
       error.code = 500;
     }
 
-    reject(error)
+    reject(error);
   });
 }
