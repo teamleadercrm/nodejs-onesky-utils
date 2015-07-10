@@ -37,7 +37,7 @@ function _getTranslation(url) {
  * @private
  */
 function _getDevHash(secret) {
-  var timestamp = Math.floor(new Date().getTime() / 1000);
+  var timestamp = Math.floor(Date.now() / 1000);
   return {
     devHash: md5(timestamp + secret),
     timestamp: timestamp
