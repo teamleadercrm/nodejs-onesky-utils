@@ -3,10 +3,10 @@ module.exports = {
   getFile: getFile
 };
 
-var request = require('request-promise'),
-  md5 = require('MD5'),
-  queryString = require('querystring'),
-  apiAddress = "https://platform.api.onesky.io/";
+var request = require('request-promise');
+var md5 = require('MD5');
+var queryString = require('querystring');
+var apiAddress = 'https://platform.api.onesky.io/';
 
 /**
  * Get translations file form service
@@ -17,7 +17,7 @@ var request = require('request-promise'),
  * @param  {String} options.language Language to download
  * @param  {String} options.fileName File name to download
  */
-function getFile(options) {
+function getFile (options) {
   options.hash = _getDevHash(options.secret);
   return _getTranslation(_getLink(options));
 }
@@ -27,7 +27,7 @@ function getFile(options) {
  * @param  {String}   language
  * @private
  */
-function _getTranslation(url) {
+function _getTranslation (url) {
   return request(url).catch(_handleError);
 }
 
@@ -36,7 +36,7 @@ function _getTranslation(url) {
  * @return {Object}
  * @private
  */
-function _getDevHash(secret) {
+function _getDevHash (secret) {
   var timestamp = Math.floor(Date.now() / 1000);
   return {
     devHash: md5(timestamp + secret),
@@ -49,8 +49,8 @@ function _getDevHash(secret) {
  * @return {String}
  * @private
  */
-function _getLink(options) {
-  return apiAddress + "/1/projects/" + options.projectId + "/translations?" + queryString.stringify({
+function _getLink (options) {
+  return apiAddress + '/1/projects/' + options.projectId + '/translations?' + queryString.stringify({
     locale: options.language,
     api_key: options.apiKey,
     timestamp: options.hash.timestamp,
@@ -63,9 +63,9 @@ function _getLink(options) {
  * @param  {Object} data
  * @private
  */
-function _handleError(data) {
+function _handleError (data) {
   var error = {};
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     try {
       var content = JSON.parse(data.response.body);
       if (content.meta) {
@@ -76,7 +76,7 @@ function _handleError(data) {
         error.code = content.code;
       }
     } catch (e) {
-      error.message = "Unable to download file";
+      error.message = 'Unable to download file';
       error.code = 500;
     }
 
