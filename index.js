@@ -1,5 +1,11 @@
+
 'use strict';
+
+global.rootRequire = function (name) {
+  return require(__dirname + '/' + name);
+};
+
 module.exports = {
-  getFile: require(__dirname + '/lib/getFile.js'),
-  postFile: require(__dirname + '/lib/postFile.js')
+  getFile: rootRequire('lib/getFile.js'),
+  postFile: rootRequire('lib/postFile.js')
 };

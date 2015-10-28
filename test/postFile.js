@@ -1,13 +1,17 @@
 /* eslint-env mocha */
 'use strict';
 
+function rootRequire (name) {
+  return require(__dirname + '/../' + name);
+}
+
 var mockery = require('mockery');
 var chai = require('chai');
 var expect = chai.expect;
 var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 var requestPromise;
-var onesky_utils;
+var oneskyUtils;
 var defaultOptions;
 
 chai.use(sinonChai);
@@ -22,7 +26,7 @@ describe('POST translations with wrong credentials', function () {
       useCleanCache: true
     });
 
-    onesky_utils = require(__dirname + '/../index.js');
+    oneskyUtils = rootRequire('index.js');
   });
 
   after(function () {
@@ -33,7 +37,6 @@ describe('POST translations with wrong credentials', function () {
   beforeEach(function () {
     defaultOptions = {
       language: 'pl',
-      fileFormat: 'HIERARCHICAL_JSON',
       projectId: 'projectId',
       secret: 'secret',
       apiKey: 'apiKey',
@@ -45,25 +48,6 @@ describe('POST translations with wrong credentials', function () {
     };
   });
 
-  it('Return error when request fails with 500', function () {
-    requestPromise = new Promise(function (resolve, reject) {
-      reject({
-        response: {
-          body: '{ message: \'Unable to upload document\', code: 500 }'
-        }
-      });
-    });
-
-    onesky_utils.postFile(defaultOptions)
-      .then(function (data) {
-        expect(data).to.be.undefined;
-      })
-      .catch(function (error) {
-        expect(error.code).to.equal(500);
-        expect(error.message).to.equal('Unable to upload document');
-      });
-  });
-
   it('Return error request fails with 400', function () {
     requestPromise = new Promise(function (resolve, reject) {
       reject({
@@ -73,7 +57,7 @@ describe('POST translations with wrong credentials', function () {
       });
     });
 
-    onesky_utils.postFile(defaultOptions)
+    oneskyUtils.postFile(defaultOptions)
       .then(function (data) {
         expect(data).to.be.undefined;
       })
@@ -95,7 +79,7 @@ describe('POST translations with wrong credentials', function () {
       });
     });
 
-    onesky_utils.postFile(defaultOptions)
+    oneskyUtils.postFile(defaultOptions)
       .then(successCallback, errorCallback)
       .then(function () {
         expect(errorCallback).to.not.have.been.calledOnce;
