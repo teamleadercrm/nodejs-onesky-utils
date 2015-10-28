@@ -33,7 +33,6 @@ describe('POST translations with wrong credentials', function () {
   beforeEach(function () {
     defaultOptions = {
       language: 'pl',
-      fileFormat: 'HIERARCHICAL_JSON',
       projectId: 'projectId',
       secret: 'secret',
       apiKey: 'apiKey',
@@ -43,25 +42,6 @@ describe('POST translations with wrong credentials', function () {
       keepStrings: false,
       callback: function () {}
     };
-  });
-
-  it('Return error when request fails with 500', function () {
-    requestPromise = new Promise(function (resolve, reject) {
-      reject({
-        response: {
-          body: '{ message: \'Unable to upload document\', code: 500 }'
-        }
-      });
-    });
-
-    onesky_utils.postFile(defaultOptions)
-      .then(function (data) {
-        expect(data).to.be.undefined;
-      })
-      .catch(function (error) {
-        expect(error.code).to.equal(500);
-        expect(error.message).to.equal('Unable to upload document');
-      });
   });
 
   it('Return error request fails with 400', function () {

@@ -70,8 +70,6 @@ The `options` object is required. Options include:
 ### postFile(options)
 Uploads translation file to OneSky.
 
-Returns response content via promise.
-
 The `options` object is required. Options include:
 
 - **options.projectId** - numerical ID of the project
@@ -83,6 +81,29 @@ The `options` object is required. Options include:
 - **options.secret** - secret and apiKey are used for authentication
 - **options.apiKey**
 
+Returns JSON API response content via promise.
+Example:
+
+````JSON
+{
+    "meta": {
+        "status": 200,
+        "record_count": 16
+    },
+    "data": [
+        {
+            "name": "translations.json",
+            "string_count": 236,
+            "last_import": {
+                "id": 123,
+                "status": "in-progress"
+            },
+            "uploaded_at": "2013-10-07T15:27:10+0000",
+            "uploaded_at_timestamp": 1381159630
+        }
+    ]
+}
+````
 
 ## Tests
 
