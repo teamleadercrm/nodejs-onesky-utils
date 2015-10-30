@@ -43,8 +43,7 @@ describe('POST translations with wrong credentials', function () {
       format: 'HIERARCHICAL_JSON',
       fileName: 'app-translation.json',
       content: JSON.stringify({toTranslate: 'Hey there'}),
-      keepStrings: false,
-      callback: function () {}
+      keepStrings: false
     };
   });
 

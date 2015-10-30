@@ -40,8 +40,7 @@ describe('GET translations with wrong credentials', function () {
       fileFormat: 'test',
       projectId: 'projectId',
       secret: 'secret',
-      apiKey: 'apiKey',
-      callback: function () {}
+      apiKey: 'apiKey'
     };
   });
 
