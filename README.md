@@ -22,7 +22,7 @@ onesky.getFile(options).then(function(content) {
   console.log(error);
 });
 ```
-### getMultiLingualFile
+### getMultilingualFile
 
 ```js
 var onesky = require('onesky-utils');
@@ -36,7 +36,7 @@ var options = {
   format: 'I18NEXT_MULTILINGUAL_JSON'
 };
 
-onesky.getMultiLingualFile(options).then(function(content) {
+onesky.getMultilingualFile(options).then(function(content) {
   console.log(content);
 }).catch(function(error) {
   console.log(error);
@@ -88,7 +88,7 @@ The `options` object is required. Options include:
 - **options.secret** - `secret` and `apiKey` are used for authentication
 - **options.apiKey**
 
-### getMultiLingualFile(options)
+### getMultilingualFile(options)
 Downloads multi-language translations from OneSky.
 
 Returns file content via promise.
