@@ -67,6 +67,24 @@ onesky.postFile(options).then(function(content) {
 });
 ```
 
+### postFile
+
+```js
+var onesky = require('onesky-utils');
+
+var options = {
+  apiKey: 'abcdefg',
+  secret: '1234567',
+  projectId: '123'
+};
+
+onesky.getLanguages(options).then(function(content) {
+  console.log(content);
+}).catch(function(error) {
+  console.log(error);
+});
+```
+
 ## Install
 
 ```
@@ -133,6 +151,53 @@ Example:
                 "id": 123,
                 "status": "in-progress"
             },
+            "uploaded_at": "2013-10-07T15:27:10+0000",
+            "uploaded_at_timestamp": 1381159630
+        }
+    ]
+}
+````
+
+### getLanguages(options)
+Get list of project languages.
+
+The `options` object is required. Options include:
+
+- **options.projectId** - Numerical ID of the project
+- **options.secret** - `secret` and `apiKey` are used for authentication
+- **options.apiKey**
+
+Returns JSON API response content via promise.
+Example:
+
+````JSON
+{
+    "meta": {
+        "status": 200,
+        "record_count": 2
+    },
+    "data": [
+        {
+            "code": "en-US",
+            "english_name": "English (United States)",
+            "local_name": "English (United States)",
+            "locale": "en",
+            "region": "US",
+            "is_base_language": true,
+            "is_ready_to_publish": true,
+            "translation_progress": "100%",
+            "uploaded_at": "2013-10-07T15:27:10+0000",
+            "uploaded_at_timestamp": 1381159630
+        },
+        {
+            "code": "ja-JP",
+            "english_name": "Japanese",
+            "local_name": "日本語",
+            "locale": "ja",
+            "region": "JP",
+            "is_base_language": false,
+            "is_ready_to_publish": true,
+            "translation_progress": "98%",
             "uploaded_at": "2013-10-07T15:27:10+0000",
             "uploaded_at_timestamp": 1381159630
         }
