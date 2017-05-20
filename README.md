@@ -67,7 +67,7 @@ onesky.postFile(options).then(function(content) {
 });
 ```
 
-### postFile
+### getLanguages
 
 ```js
 var onesky = require('onesky-utils');
