@@ -12,7 +12,7 @@ $ npm i @brainly/onesky-utils
 ### getFile
 
 ```js
-var onesky = require('onesky-utils');
+var onesky = require('@brainly/onesky-utils');
 
 var options = {
   language: 'en_EN',
