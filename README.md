@@ -134,6 +134,15 @@ The `options` object is required. Options include:
 - **options.secret** - `secret` and `apiKey` are used for authentication
 - **options.apiKey**
 
+### getFiles(options)
+Returns every files' information via promise.
+
+The `options` object is required. Options include:
+
+- **options.projectId** - Numerical ID of the project
+- **options.secret** - `secret` and `apiKey` are used for authentication
+- **options.apiKey**
+
 ### getMultilingualFile(options)
 Downloads multi-language translations from OneSky.
 
