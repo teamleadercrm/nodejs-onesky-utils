@@ -28,6 +28,24 @@ onesky.getFile(options).then(function(content) {
   console.log(error);
 });
 ```
+
+### getFiles
+
+```js
+var onesky = require('@brainly/onesky-utils');
+
+var options = {
+  secret: '1234567',
+  apiKey: 'abcdefg',
+  projectId: '123',
+};
+
+onesky.getFiles(options).then(function(content) {
+  console.log(content);
+}).catch(function(error) {
+  console.log(error);
+});
+```
 ### getMultilingualFile
 
 ```js
