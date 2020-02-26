@@ -28,6 +28,24 @@ onesky.getFile(options).then(function(content) {
   console.log(error);
 });
 ```
+
+### getFiles
+
+```js
+var onesky = require('@brainly/onesky-utils');
+
+var options = {
+  secret: '1234567',
+  apiKey: 'abcdefg',
+  projectId: '123',
+};
+
+onesky.getFiles(options).then(function(content) {
+  console.log(content);
+}).catch(function(error) {
+  console.log(error);
+});
+```
 ### getMultilingualFile
 
 ```js
@@ -131,6 +149,15 @@ The `options` object is required. Options include:
 - **options.projectId** - Numerical ID of the project
 - **options.fileName** - Name of the translation file
 - **options.language** - Language version
+- **options.secret** - `secret` and `apiKey` are used for authentication
+- **options.apiKey**
+
+### getFiles(options)
+Returns every files' information via promise.
+
+The `options` object is required. Options include:
+
+- **options.projectId** - Numerical ID of the project
 - **options.secret** - `secret` and `apiKey` are used for authentication
 - **options.apiKey**
 
