@@ -160,6 +160,8 @@ The `options` object is required. Options include:
 - **options.projectId** - Numerical ID of the project
 - **options.secret** - `secret` and `apiKey` are used for authentication
 - **options.apiKey**
+- **options.page** - Page number to retrieve
+- **options.perPage** - How many items a page should contain
 
 ### getMultilingualFile(options)
 Downloads multi-language translations from OneSky.
